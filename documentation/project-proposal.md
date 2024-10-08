@@ -7,35 +7,34 @@ ___
 
 ### 🚀 Problem Statement
 
-Clearly define the problem or challenge your project aims to address. Explain why this problem is important and how your project will provide a solution.
-* Who the application's audience is
-* What the application does for the user
-* Why the user would use the application
+Those who are first-generation, low-income and/or BIPOC face the unique challenges of attaining financial literacy, which is essential for their personal and professional success. These individuals often lack the critical financial education and resources that provides a financial foundation of budgeting, saving, investing, and credit management. Along with systemic inequities in education, limited financial conversations in the household exacerbate this knowledge gap opposed to those in agent groups who has been systematically advantaged by society and have the privilege of passing wealth and financial knowledge. As a result, the cycle of poverty persists as without financial literacy, individuals are not able to make informed financial decisions that promotes long-term economic mobility and building generational wealth. 
 
-*Example:* Our application would mainly serve individuals with disability or mobility issues under financial or physical constraints. A priority would be those who live in underprivileged communities, conflict-affected areas, or communities with limited healthcare infrastructure. Our product will leverage the power of technology and community collaboration to make assistive devices more accessible and affordable to those in need. This is done by connecting individuals to a network of builders who facilitate the creation and distribution of affordable, 3D-printed devices.
 ___
 
 
 ### 📝 Features & User Stories
-* Describes all the features and their purpose.
-* For each feature, outline the user flow.
-* Identify features required for a MVP
 
+* **Realistic Paycheck Scenarios**
+Participants will receive simulated paychecks based on different job types, income levels, and hours worked.
+Includes taxation, deductions, and benefits to illustrate gross pay vs net pay
 
-Example: 
+* **Budgeting Exercises**
+Participants will receive the option to fill out a budget template based on their simulated  income.
+Introduces fixed expenses, variable expenses, savings/investing (Needs/Wants/Savings)
 
-* **User Profile Page (MVP)**: Users can sign into the application to see their home page. The home page will display all of their blog posts and settings for updating their profile.
-* **Other User Profile Page (MVP)**: Users can see a directory of all users in the application. Clicking on their name will take the user to view the profile of that user.
-* **Live Chat (MVP)**: Users can start a chat with another user. This chat will have live updates and all messages will be saved.
-* **Chatbot (Stretch)**: Users can navigate to the `/chat` page to interact with a chatbot powered by ChatGPT.
+* **LDecision-Making Scenarios**
+Present realistic life scenarios and financial dilemmas (unexpected expenses such as emergencies, events, debt repayment) to encourage participants to make informed decisions.
+Include financial consequences for poor financial choices to reinforce the importance of decision-making.
+
+* **Community Forum**
+Participants can share their experiences, ask questions, and support each other. 
+
 
 ___
 
 
 ### 📚 Tech Stack: 
-Clearly state the technologies, frameworks, and tools you intend to use for the front-end and back-end development.
-
-*Example:* We intend on using React for the front end, Node.js and Express for the backend, and PostgreSQL for the database. We will also incorporate Socket.io to implement the live chat feature and ChatGPT to implement the chatbot feature.
+We intend to use React for the front end, Node.js and Express for the back end, and PostgreSQL for the database. 
 
 ___
 
