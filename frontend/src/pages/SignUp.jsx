@@ -11,6 +11,7 @@ export default function SignUpPage() {
   const [errorText, setErrorText] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('')
 
   // users shouldn't be able to see the sign up page if they are already logged in.
   // if the currentUser exists in the context, navigate the user to 
@@ -20,9 +21,9 @@ export default function SignUpPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorText('');
-    if (!username || !password) return setErrorText('Missing username or password');
+    if (!username || !password || !userType) return setErrorText('Please fill all fields.');
 
-    const [user, error] = await createUser({ username, password });
+    const [user, error] = await createUser({ username, password, userType });
     if (error) return setErrorText(error.message);
 
     setCurrentUser(user);
@@ -33,6 +34,7 @@ export default function SignUpPage() {
     const { name, value } = event.target;
     if (name === 'username') setUsername(value);
     if (name === 'password') setPassword(value);
+    if(name === 'userType') setUserType(value)
   };
 
   return <>
@@ -58,6 +60,17 @@ export default function SignUpPage() {
         onChange={handleChange}
         value={password}
       />
+     <label htmlFor="userType">Are you an admin or a student?</label>
+      <select
+        id="userType"
+        name="userType"
+        onChange={handleChange}
+        value={userType}
+      >
+        <option value="">Select user type</option>
+        <option value="admin">Admin</option>
+        <option value="student">Student</option>
+      </select>
 
       {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
         <label htmlFor="password-confirm">Password Confirm</label>
