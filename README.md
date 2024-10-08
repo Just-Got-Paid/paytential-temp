@@ -1,12 +1,12 @@
-# Project Name
+# Paytential
 
-> Pithy project description
+> Paytential is a financial simulator aimed at helping young people move up in the world.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Andii Zhu
+  - __Scrum Master__: Zhenni Wu
+  - __UX/UI Lead__: Nicole Santiago
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@
 From within the root directory:
 
 ```sh
-<COMMANDS_HERE>
+npm i
 ```
 
 ### Roadmap
