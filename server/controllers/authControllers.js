@@ -27,6 +27,7 @@ exports.logoutUser = (req, res) => {
 // This controller returns 401 if the client is NOT logged in (doesn't have a cookie)
 // or returns the user based on the userId stored on the client's cookie
 exports.showMe = async (req, res) => {
+  console.log('Session on /api/me:', req.session);
   if (!req.session.userId) return res.sendStatus(401);
 
   const user = await User.find(req.session.userId);
