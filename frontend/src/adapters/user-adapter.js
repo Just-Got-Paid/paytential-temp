@@ -4,8 +4,9 @@ import { fetchHandler, getPostOptions, getPatchOptions } from "../utils/fetching
 
 const baseUrl = '/api/users';
 
-export const createUser = async ({ username, password, userType }) => {
-  return fetchHandler(baseUrl, getPostOptions({ username, password, userType }))
+export const createUser = async ({ username, password, isAdmin, organization }) => {
+  // Now we directly use isAdmin and organization in the request body
+  return fetchHandler(baseUrl, getPostOptions({ username, password, isAdmin, organization }));
 };
 
 // For this one adapter, if an error occurs, we handle it here by printing
@@ -18,9 +19,10 @@ export const getAllUsers = async () => {
 
 export const getUser = async (id) => {
   return fetchHandler(`${baseUrl}/${id}`);
-}
+};
 
 export const updateUsername = async ({ id, username }) => {
-  return fetchHandler(`${baseUrl}/${id}`, getPatchOptions({ id, username }))
-}
+  return fetchHandler(`${baseUrl}/${id}`, getPatchOptions({ id, username }));
+};
+
 

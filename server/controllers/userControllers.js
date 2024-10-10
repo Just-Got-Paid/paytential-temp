@@ -1,40 +1,76 @@
-const { isAuthorized } = require('../utils/auth-utils');
 const User = require('../models/User');
 
-exports.createUser = async (req, res) => {
-  const { username, password } = req.body;
+// Controller to handle user sign-up
+async function signUp(req, res) {
+  console.log('SignUp function called');
+  const { username, password, email, organization, isAdmin } = req.body;
 
-  // TODO: check if username is taken, and if it is what should you return?
-  const user = await User.create(username, password);
-  req.session.userId = user.id;
+  try {
+    // Create a new user using the User model's create method
+    const user = await User.create(username, password, email, organization, isAdmin);
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
 
-  res.send(user);
-};
+// Controller to list all users
+async function listUsers(req, res) {
+  try {
+    const users = await User.list();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+}
 
-exports.listUsers = async (req, res) => {
-  const users = await User.list();
-  res.send(users);
-};
-
-exports.showUser = async (req, res) => {
+// Controller to get a single user by ID
+async function getUser(req, res) {
   const { id } = req.params;
 
-  const user = await User.find(id);
-  if (!user) return res.sendStatus(404);
+  try {
+    const user = await User.find(id);
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch user' });
+  }
+}
 
-  res.send(user);
-};
-
-exports.updateUser = async (req, res) => {
-  const { username } = req.body;
+// Controller to update a user
+async function updateUser(req, res) {
   const { id } = req.params;
+  const { username, email, organization, isAdmin } = req.body;
 
-  // Not only do users need to be logged in to update a user, they
-  // need to be authorized to perform this action for this particular
-  // user (users should only be able to change their own profiles)
-  if (!isAuthorized(id, req.session)) return res.sendStatus(403);
+  try {
+    const updatedUser = await User.update(id, username, email, organization, isAdmin);
+    if (updatedUser) {
+      res.status(200).json(updatedUser);
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
 
-  const updatedUser = await User.update(id, username);
-  if (!updatedUser) return res.sendStatus(404)
-  res.send(updatedUser);
+// Controller to delete all users (useful for testing)
+async function deleteAllUsers(req, res) {
+  try {
+    await User.deleteAll();
+    res.status(204).end();
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete all users' });
+  }
+}
+
+module.exports = {
+  signUp,
+  listUsers,
+  getUser,
+  updateUser,
+  deleteAllUsers,
 };

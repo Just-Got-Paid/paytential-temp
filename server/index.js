@@ -14,6 +14,7 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 // controller imports
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
+
 const app = express();
 
 // middleware
@@ -37,8 +38,9 @@ app.delete('/api/logout', authControllers.logoutUser);
 ///////////////////////////////
 // User Routes
 ///////////////////////////////
+console.log(userControllers.signUp)
 
-app.post('/api/users', userControllers.createUser);
+app.post('/api/users', userControllers.signUp);
 
 // These actions require users to be logged in (authentication)
 // Express lets us pass a piece of middleware to run for a specific endpoint
